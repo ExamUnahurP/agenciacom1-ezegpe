@@ -17,20 +17,27 @@ describe "test del requirimiento 1: el valor final de un pack"{
     const beneficioVigente2 = new BeneficiosEspeciales(
         tipo = "Acceso VIP",
         costo = 3000,
-        estaVigente = true 
+        estaVigente = true
     )
 
-    const BeneficioNoVigente = new BeneficiosEspeciales(
+    const beneficioNoVigente = new BeneficiosEspeciales(
         tipo = "Seguro adicional",
         costo = 1500,
         estaVigente = false
 
     )
 
+
     test "Un pack nacional sin beneficios vigentes devuelve el mismo precio base"{
         const packNacional = new PacksNacionales(
             duracionDias = 7,
             precioBase = 1000,
-            beneficiosEspeciales = 
+            beneficiosEspeciales = [beneficioNoVigente],
+            coordinador = coordinadorBase,
+            proviciaDestino = "Mendoza",
+            actividades = ["Trekking"]
+
+            assert.equals(1000, packNacional.valorFinal())
         )
     }
+}
