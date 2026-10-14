@@ -1,8 +1,8 @@
 class Packs{
     var property duracionDias 
     var property precioBase 
-    var property beneficiosEspeciales 
-    var coordinador  
+    const property beneficiosEspeciales = [] 
+    var property coordinador  
 }
 
 class PacksNacionales inherits Packs{
@@ -18,10 +18,20 @@ class PackInternaciones inherits Packs{
 }
 
 class Coordinador{
-    const property cantidaDeViajesRealizados 
+    var property cantidaDeViajesRealizados 
     var property estaMotivado 
-    const property añosDeExperiencia 
-    var property rol 
+    var property añosDeExperiencia 
+    var rol
+
+    method rol() = rol
+
+    method cambiarRol(rolNuevo){
+        if (!["Guia", "Asistente Logistico", "Acompañante"].contains(rolNuevo)){
+            self.error("Este rol no existe")
+        }
+
+        rol = rolNuevo
+    }
 
 }
 
