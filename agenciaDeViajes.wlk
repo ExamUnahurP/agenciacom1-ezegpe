@@ -16,6 +16,12 @@ class PacksNacionales inherits Packs{
     var property proviciaDestino 
     const actividades = []
 
+    method esPremium(){
+        if (duracionDias > 10 and coordinador.esAltamenteCalificado()){
+            return true 
+        }
+    }
+
     
 }
 
@@ -26,6 +32,10 @@ class PackInternaciones inherits Packs{
 
     override method valorFinal(){
         return super() * 1.20 
+    }
+
+    method esPremium(){
+        if (esLugarDeInteres and duracionDias > 20 and cantidadEscalas == 0)
     }
 }
 
@@ -46,8 +56,16 @@ class Coordinador{
 
         rol = rolNuevo
     }
-
-    method esCalificado() =
+    method cumpleCondicionPorRol(){
+        if (rol == "Guia"){
+            return estaMotivado
+        } else if  (rol == "Asistente Logistico"){
+            return añosDeExperiencia >= 3 
+        } else if (rol == "Acompañante"){
+            return true 
+        }
+    }
+    method esAltamenteCalificado() = cantidaDeViajesRealizados > 20 and self.cumpleCondicionPorRol()
 
 }
 
