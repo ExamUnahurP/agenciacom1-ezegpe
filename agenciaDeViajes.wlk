@@ -72,5 +72,7 @@ class BeneficiosEspeciales{
 }
 
 class PacksProvinciales inherits PacksNacionales{
-    override method esPremium() = actividades.size() >= 4 and 
+    var property ciudadesAVisitar 
+
+    override method esPremium() = actividades.size() >= 4 and ciudadesAVisitar > 5 and 
 }
