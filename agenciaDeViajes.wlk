@@ -4,6 +4,11 @@ class Packs{
     const property beneficiosEspeciales = [] 
     var property coordinador
 
+    method costoBeneficiosVigentes(){
+        return beneficiosEspeciales.filter({beneficio => beneficio.estaVigente()}).sum({beneficio => beneficio.costo()})
+    }
+
+    method valorFinal() = precioBase + self.costoBeneficiosVigentes()
     
 }
 
@@ -11,8 +16,7 @@ class PacksNacionales inherits Packs{
     var property proviciaDestino 
     const actividades = []
 
-    method valorFinal() = precioBase + BeneficiosEspeciales.costo 
-
+    
 }
 
 class PackInternaciones inherits Packs{
@@ -20,7 +24,9 @@ class PackInternaciones inherits Packs{
     var property cantidadEscalas 
     var property esLugarDeInteres
 
-    method vlaorFinal() = (precioBase + BeneficiosEspeciales.costo) * 1.2
+    override method valorFinal(){
+        return super() * 1.20 
+    }
 }
 
 class Coordinador{
@@ -40,6 +46,8 @@ class Coordinador{
 
         rol = rolNuevo
     }
+
+    method esCalificado() =
 
 }
 
