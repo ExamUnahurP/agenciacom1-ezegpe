@@ -1,3 +1,36 @@
 import agenciaDeViajes.*
 
-describe "test del requirimiento 1: el valor final de un packl"
+describe "test del requirimiento 1: el valor final de un pack"{
+    const coordinadorBase = new Coordinador(
+        cantidaDeViajesRealizados = 5,
+        estaMotivado = true,
+        añosDeExperiencia = 2,
+        rol = "Guia"
+    )
+
+    const beneficioVigente1 = new BeneficiosEspeciales(
+        tipo = "Traslado Privado",
+        costo = 2000,
+        estaVigente = true 
+    )
+
+    const beneficioVigente2 = new BeneficiosEspeciales(
+        tipo = "Acceso VIP",
+        costo = 3000,
+        estaVigente = true 
+    )
+
+    const BeneficioNoVigente = new BeneficiosEspeciales(
+        tipo = "Seguro adicional",
+        costo = 1500,
+        estaVigente = false
+
+    )
+
+    test "Un pack nacional sin beneficios vigentes devuelve el mismo precio base"{
+        const packNacional = new PacksNacionales(
+            duracionDias = 7,
+            precioBase = 1000,
+            beneficiosEspeciales = 
+        )
+    }
