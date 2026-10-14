@@ -9,6 +9,8 @@ class Packs{
     }
 
     method valorFinal() = precioBase + self.costoBeneficiosVigentes()
+
+    method esPremium()
     
 }
 
@@ -16,11 +18,7 @@ class PacksNacionales inherits Packs{
     var property proviciaDestino 
     const actividades = []
 
-    method esPremium(){
-        if (duracionDias > 10 and coordinador.esAltamenteCalificado()){
-            return true 
-        }
-    }
+    method esPremium() = duracionDias > 10 and coordinador.esAltamenteCalificado()
 
     
 }
@@ -34,9 +32,7 @@ class PackInternaciones inherits Packs{
         return super() * 1.20 
     }
 
-    method esPremium(){
-        if (esLugarDeInteres and duracionDias > 20 and cantidadEscalas == 0)
-    }
+    method esPremium() = esLugarDeInteres and duracionDias > 20 and cantidadEscalas == 0
 }
 
 class Coordinador{
@@ -73,4 +69,8 @@ class BeneficiosEspeciales{
     var property tipo 
     const property costo 
     var property estaVigente 
+}
+
+class PacksProvinciales inherits PacksNacionales{
+    override method esPremium() = actividades.size() >= 4 and 
 }
