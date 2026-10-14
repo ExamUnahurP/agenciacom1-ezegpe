@@ -74,11 +74,7 @@ class BeneficiosEspeciales{
 class PacksProvinciales inherits PacksNacionales{
     var property ciudadesAVisitar 
 
-    override method esPremium() = actividades.size() >= 4 and ciudadesAVisitar > 5 and beneficiosEspeciales.count(estaVigente) >= 3
+    override method esPremium() = actividades.size() >= 4 and ciudadesAVisitar > 5 and beneficiosEspeciales.count({benefiicio => beneficio.estaVigente()}) >= 3
 
-    override method valorFinal(){
-        if (self.esPremium()){
-            super() +
-        }
-    }
+    override method valorFinal() = if (self.esPremium()) super() * 1.05 else super()
 }
